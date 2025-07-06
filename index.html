@@ -3,333 +3,755 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מחשבון עמלות פנסיה</title>
+    <title>הדרך לביטחון כלכלי: וובינר השקעות לטווח ארוך</title>
+    
+    <!-- Google Fonts - Web Safe -->
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Heebo:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome - Web CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS - Web CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Assistant', 'Heebo', 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            color: #1F2937;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
+
         .container {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        h1, h2 {
-            color: #4a90e2;
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=800&fit=crop&crop=center);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #2563EB22, #1E40AF22);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
             text-align: center;
+            color: white;
+            animation: fadeInUp 1s ease-out;
         }
-        .form-group {
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #F59E0B 0%, #f97316 100%);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #2563EB;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #F59E0B, #2563EB);
+            border-radius: 2px;
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2563EB, #F59E0B);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #2563EB, #1E40AF);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
             margin-bottom: 15px;
+            color: #2563EB;
         }
-        label {
-            display: block;
+
+        .feature-card p {
+            color: #64748b;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .testimonial-content {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: #F59E0B;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
             margin-bottom: 5px;
         }
-        input, select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+
+        .author-info p {
+            opacity: 0.8;
+            font-size: 0.9rem;
         }
-        button {
-            background-color: #4a90e2;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-right: 5px;
-            margin-bottom: 10px;
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(180deg, #f1f5f9 0%, white 100%);
         }
-        button:hover {
-            background-color: #357ae8;
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
         }
-        .scroll-wrapper {
-            overflow-x: auto;
+
+        .contact h2 {
+            color: #2563EB;
+            margin-bottom: 20px;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
+
+        .contact p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 40px;
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
             text-align: right;
         }
-        th {
-            background-color: #f2f2f2;
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2563EB;
         }
-        .hidden {
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            text-align: right;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563EB;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Speaker Section */
+        .speaker-section {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .speaker-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px;
+            border: 5px solid #2563EB;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Event Details */
+        .event-details {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 60px 0;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .detail-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .detail-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .detail-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2563EB, #F59E0B);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card,
+            .testimonial-card {
+                padding: 30px;
+            }
+            
+            .contact-form {
+                padding: 30px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Success/Error Messages */
+        .success-message {
+            background: #10B981;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
             display: none;
         }
-        .credit {
-            text-align: center;
+
+        .error-message {
+            background: #EF4444;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
             margin-top: 20px;
-            font-size: 0.8em;
-            color: #666;
+            text-align: center;
+            display: none;
+        }
+
+        /* Floating particles */
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                radial-gradient(circle at 40% 80%, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 100px 100px, 80px 80px, 60px 60px;
+            animation: float 20s infinite linear;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(-60px) rotate(240deg); }
+            100% { transform: translateY(0px) rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>מחשבון עמלות פנסיה</h1>
-
-        <div class="form-group">
-            <label for="date">תאריך:</label>
-            <input type="date" id="date" required>
-        </div>
-
-        <div class="form-group">
-            <label for="clientName">שם הלקוח:</label>
-            <input type="text" id="clientName" required>
-        </div>
-
-        <div class="form-group">
-            <label for="company">חברת ביטוח/בית השקעות:</label>
-            <select id="company">
-                <option value="כלל">כלל</option>
-                <option value="הראל">הראל</option>
-                <option value="מגדל">מגדל</option>
-                <option value="הפניקס">הפניקס</option>
-                <option value="מיטב דש">מיטב דש</option>
-                <option value="מור">מור</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="salary">שכר חודשי (בש"ח):</label>
-            <input type="number" id="salary" required>
-        </div>
-
-        <div class="form-group">
-            <label for="accumulation">סכום צבירה (בש"ח):</label>
-            <input type="number" id="accumulation" required>
-        </div>
-
-        <div class="form-group">
-            <label for="provision">אחוז הפרשה:</label>
-            <select id="provision">
-                <option value="18.5">18.5% (6+6.5+6)</option>
-                <option value="19.5">19.5% (7+6.5+6)</option>
-                <option value="20.5">20.5% (7+7.5+6)</option>
-                <option value="20.83">20.83% (6+6.5+8.33)</option>
-                <option value="21.83">21.83% (7+6.5+8.33)</option>
-                <option value="22.83">22.83% (7+7.5+8.33)</option>
-            </select>
-        </div>
-
-        <button onclick="calculateAndSave()">הוסף לקוח לרשימה</button>
-        <button onclick="generateMonthlyReport()">הפק דוח חודשי</button>
-        <button onclick="downloadExcel()">הורד כקובץ אקסל</button>
-        <button onclick="sendToWhatsApp()">שלח לוואטסאפ</button>
-        <button onclick="clearAllData()">נקה את כל הנתונים</button>
-
-        <div id="clientList" class="hidden">
-            <h2>רשימת לקוחות</h2>
-            <div class="scroll-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>תאריך</th>
-                            <th>שם הלקוח</th>
-                            <th>חברת ביטוח/בית השקעות</th>
-                            <th>שכר חודשי</th>
-                            <th>סכום צבירה</th>
-                            <th>אחוז הפרשה</th>
-                            <th>עמלת היקף שנתית</th>
-                            <th>עמלה מצבירה</th>
-                            <th>סה"כ עמלה</th>
-                        </tr>
-                    </thead>
-                    <tbody id="clientTableBody"></tbody>
-                </table>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>וובינר השקעות לטווח ארוך: בנה את עתידך הפיננסי</h1>
+                <p class="subtitle">הצטרף אלינו ב-20.8.25 בשעה 20:00 ללמוד מהמומחים!</p>
+                
+                <a href="#contact" class="cta-button">
+                    <i class="fas fa-rocket" style="margin-left: 10px;"></i>
+                    הירשם עכשיו לוובינר חינם
+                </a>
             </div>
         </div>
+    </section>
 
-        <div id="monthlyReport" class="hidden">
-            <h2>דוח חודשי</h2>
-            <div id="reportContent"></div>
+    
+
+    
+
+    
+    <!-- Features Section -->
+    <section class="features section fade-in">
+        <div class="container">
+            <h2 class="section-title">למה כדאי להשתתף?</h2>
+            <div class="features-grid">
+                
+                <div class="feature-card" style="animation-delay: 0s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>אסטרטגיות מוכחות</h3>
+                    <p>למד את הגישות המנצחות של משקיעים מובילים ליצירת תשואה יציבה.</p>
+                </div>
+                
+                <div class="feature-card" style="animation-delay: 0.2s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>הגנה מפני תנודתיות</h3>
+                    <p>גלה כיצד להגן על השקעותיך בתקופות אי-ודאות ולמזער סיכונים.</p>
+                </div>
+                
+            </div>
         </div>
+    </section>
+    
 
-        <div class="credit">
-            כל הזכויות שמורות לאריאל אוחיון
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials section fade-in">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">מה אומרים המשתתפים</h2>
+            <div class="testimonials-grid">
+                
+                <div class="testimonial-card" style="animation-delay: 0s;">
+                    <p class="testimonial-content">"הוובינר נתן לי כלים פרקטיים וביטחון להתחיל להשקיע לטווח ארוך. מומלץ בחום לכל מי שרוצה לדאוג לעתידו הפיננסי!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            א
+                        </div>
+                        <div class="author-info">
+                            <h4>איתי לוי</h4>
+                            <p>יזם היי-טק</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
         </div>
-    </div>
+    </section>
+    
 
+    <!-- Contact Section -->
+    <section id="contact" class="contact section fade-in">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">הבטח את מקומך בוובינר</h2>
+                <p>מלא את הפרטים הבאים וקבל קישור ישיר לוובינר ולחומרי ההכנה.</p>
+                
+                <form class="contact-form" id="contactForm">
+                    
+                    <div class="form-group">
+                        <label for="שם">שם:</label>
+                        <input type="text" 
+                                    id="שם" 
+                                    name="שם" 
+                                    placeholder="הכנס שם..." 
+                                    required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="טלפון">טלפון:</label>
+                        <input type="tel" 
+                                    id="טלפון" 
+                                    name="טלפון" 
+                                    placeholder="הכנס טלפון..." 
+                                    required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="אימייל">אימייל:</label>
+                        <input type="email" 
+                                    id="אימייל" 
+                                    name="אימייל" 
+                                    placeholder="הכנס אימייל..." 
+                                    required>
+                    </div>
+                    
+                    
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-paper-plane" style="margin-left: 10px;"></i>
+                        שלח פרטים
+                    </button>
+                    
+                    <div id="successMessage" class="success-message">
+                        ✅ תודה על הרשמתך! נחזור אליך בהקדם.
+                    </div>
+                    
+                    <div id="errorMessage" class="error-message">
+                        ❌ אירעה שגיאה בשליחת הטופס. אנא נסה שוב.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Web-Based Form Handling Script -->
     <script>
-        const companyRates = {
-            'כלל': { scope: 0.09, accumulation: 3000 },
-            'הראל': { scope: 0.06, accumulation: 0 },
-            'מגדל': { scope: 0.07, accumulation: 2500 },
-            'הפניקס': { scope: 0.06, accumulation: 0 },
-            'מיטב דש': { scope: 0.03, accumulation: 2500 },
-            'מור': { scope: 0.06, accumulation: 1760 }
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission handling with lead tracking
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Hide previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Show loading state
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-left: 10px;"></i>שולח...';
+            submitButton.disabled = true;
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Submit lead to tracking system
+            submitLead(data).then(() => {
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button after delay
+                setTimeout(() => {
+                    submitButton.innerHTML = originalText;
+                    submitButton.disabled = false;
+                }, 2000);
+                
+            }).catch(error => {
+                console.error('Error submitting lead:', error);
+                errorMessage.style.display = 'block';
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            });
+        });
+
+        // Lead submission function
+        async function submitLead(formData) {
+            
+            // No page ID provided - basic form submission
+            console.log('Form submitted:', formData);
+            // You can integrate with other services here
+            return Promise.resolve();
+        }
+
+        // Page view tracking
+        function recordPageView(pageId) {
+            if (!pageId) return;
+            
+            try {
+                fetch(window.location.origin + '/api/page-views/record', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        page_id: pageId,
+                        url: window.location.href,
+                        referrer: document.referrer,
+                        user_agent: navigator.userAgent,
+                        timestamp: new Date().toISOString()
+                    })
+                }).catch(error => {
+                    console.error('Error recording page view:', error);
+                });
+            } catch (error) {
+                console.error('Error in recordPageView:', error);
+            }
+        }
+
+        // Record page view on load
+        // No page tracking
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
 
-        let clients = [];
-
-        function calculateAndSave() {
-            const date = document.getElementById('date').value;
-            const clientName = document.getElementById('clientName').value;
-            const company = document.getElementById('company').value;
-            const salary = parseFloat(document.getElementById('salary').value);
-            const accumulation = parseFloat(document.getElementById('accumulation').value);
-            const provision = parseFloat(document.getElementById('provision').value) / 100;
-
-            if (!date || !clientName || isNaN(salary) || isNaN(accumulation)) {
-                alert('נא למלא את כל השדות בצורה תקינה');
-                return;
-            }
-
-            const rates = companyRates[company];
-            const scopeCommission = salary * 12 * rates.scope * provision;
-            const accumulationCommission = (accumulation / 1000000) * rates.accumulation;
-            const totalCommission = scopeCommission + accumulationCommission;
-
-            const client = {
-                date,
-                name: clientName,
-                company,
-                salary,
-                accumulation,
-                provision,
-                scopeCommission,
-                accumulationCommission,
-                totalCommission
-            };
-
-            clients.push(client);
-            updateClientList();
-            clearInputs();
-        }
-
-        function updateClientList() {
-            const clientList = document.getElementById('clientList');
-            const clientTableBody = document.getElementById('clientTableBody');
-            clientList.classList.remove('hidden');
-            clientTableBody.innerHTML = '';
-
-            clients.forEach(client => {
-                const row = clientTableBody.insertRow();
-                row.innerHTML = `
-                    <td>${client.date}</td>
-                    <td>${client.name}</td>
-                    <td>${client.company}</td>
-                    <td>${client.salary.toLocaleString()} ₪</td>
-                    <td>${client.accumulation.toLocaleString()} ₪</td>
-                    <td>${(client.provision * 100).toFixed(2)}%</td>
-                    <td>${client.scopeCommission.toLocaleString()} ₪</td>
-                    <td>${client.accumulationCommission.toLocaleString()} ₪</td>
-                    <td>${client.totalCommission.toLocaleString()} ₪</td>
-                `;
-            });
-        }
-
-        function clearInputs() {
-            document.getElementById('clientName').value = '';
-            document.getElementById('salary').value = '';
-            document.getElementById('accumulation').value = '';
-        }
-
-        function generateMonthlyReport() {
-            const monthlyReport = document.getElementById('monthlyReport');
-            const reportContent = document.getElementById('reportContent');
-            monthlyReport.classList.remove('hidden');
-
-            let reportHTML = '<h3>סיכום חודשי</h3>';
-            reportHTML += '<table><tr><th>חברה</th><th>סה"כ עמלות</th></tr>';
-
-            const companySummary = {};
-            clients.forEach(client => {
-                if (!companySummary[client.company]) {
-                    companySummary[client.company] = 0;
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
-                companySummary[client.company] += client.totalCommission;
             });
+        }, observerOptions);
 
-            for (const [company, total] of Object.entries(companySummary)) {
-                reportHTML += `<tr><td>${company}</td><td>${total.toLocaleString()} ₪</td></tr>`;
-            }
-
-            reportHTML += '</table>';
-            reportContent.innerHTML = reportHTML;
-        }
-
-        function downloadExcel() {
-            if (clients.length === 0) {
-                alert('אין נתונים להורדה');
-                return;
-            }
-
-            let csvContent = "data:text/csv;charset=utf-8,\uFEFF";
-            csvContent += "תאריך,שם לקוח,חברה,שכר חודשי,סכום צבירה,אחוז הפרשה,עמלת היקף,עמלת צבירה,סה\"כ עמלה\n";
-
-            clients.forEach(client => {
-                const row = [
-                    client.date,
-                    client.name,
-                    client.company,
-                    client.salary,
-                    client.accumulation,
-                    (client.provision * 100).toFixed(2) + '%',
-                    client.scopeCommission,
-                    client.accumulationCommission,
-                    client.totalCommission
-                ].join(',');
-                csvContent += row + "\n";
-            });
-
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "דוח_עמלות_פנסיה.csv");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        function sendToWhatsApp() {
-            if (clients.length === 0) {
-                alert('אין נתונים לשליחה');
-                return;
-            }
-
-            const lastClient = clients[clients.length - 1];
-            const message = `
-דוח עמלות פנסיה:
-תאריך: ${lastClient.date}
-שם לקוח: ${lastClient.name}
-חברה: ${lastClient.company}
-שכר חודשי: ${lastClient.salary.toLocaleString()} ₪
-סכום צבירה: ${lastClient.accumulation.toLocaleString()} ₪
-אחוז הפרשה: ${(lastClient.provision * 100).toFixed(2)}%
-עמלת היקף שנתית: ${lastClient.scopeCommission.toLocaleString()} ₪
-עמלה מצבירה: ${lastClient.accumulationCommission.toLocaleString()} ₪
-סה"כ עמלה: ${lastClient.totalCommission.toLocaleString()} ₪
-            `;
-
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/972545425189?text=${encodedMessage}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        function clearAllData() {
-            clients = [];
-            updateClientList();
-            document.getElementById('monthlyReport').classList.add('hidden');
-            clearInputs();
-        }
-
-        // Set default date to today
-        document.addEventListener('DOMContentLoaded', function() {
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('date').value = today;
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
         });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+        });
+
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.3s ease';
     </script>
 </body>
 </html>
